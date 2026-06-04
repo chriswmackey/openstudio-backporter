@@ -53,7 +53,7 @@ def copy_object_as_is(obj: openstudio.IdfObject, newObject: openstudio.IdfObject
 def copy_with_deleted_fields(
     obj: openstudio.IdfObject, newObject: openstudio.IdfObject, skip_indices: set[int]
 ) -> None:
-    """Copy an IdfObject while skipping certain field indices.
+    """Copy an IdfObject while skipping certain field indices that were deleted.
 
     Args:
     -----
@@ -69,6 +69,27 @@ def copy_with_deleted_fields(
             continue
         if value := obj.getString(i):
             newObject.setString(i - offset, value.get())
+
+
+def copy_with_added_fields(
+    obj: openstudio.IdfObject, newObject: openstudio.IdfObject, skip_indices: set[int]
+) -> None:
+    """Copy an IdfObject while skipping certain field indices that were added.
+
+    Args:
+    -----
+    * obj: (openstudio.IdfObject) (float): The source IdfObject, from the newer version
+    * newObject: (openstudio.IdfObject) The target IdfObject, from the older version
+    * skip_indices: (set[int]) The set of field indices to skip (0-indexed)
+    """
+
+    offset = 0
+    for i in range(newObject.numFields()):
+        if i in skip_indices:
+            offset += 1
+            continue
+        if value := obj.getString(i - offset):
+            newObject.setString(i, value.get())
 
 
 def copy_with_cutoff_fields(obj: openstudio.IdfObject, newObject: openstudio.IdfObject, cutoff_index: int) -> None:
