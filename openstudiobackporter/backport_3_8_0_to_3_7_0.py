@@ -85,7 +85,11 @@ def run_translation(idf_3_8_0: openstudio.IdfFile) -> openstudio.IdfFile:
             # ----------------------------------------------
             # * Mean Radiant Temperature Calculation Type * 10
             #   * ZoneAveraged -> EnclosureAveraged
-            copy_object_as_is(obj=obj, newObject=newObject)
+            copy_with_deleted_fields(obj=obj, newObject=newObject, skip_indices={10})
+            if value := obj.getString(10):
+                value = value.get()
+                value = 'ZoneAveraged' if value == 'EnclosureAveraged' else value
+                newObject.setString(10, value)
             targetIdf.addObject(newObject)
 
         elif iddname == "OS:Schedule:Day":
@@ -94,6 +98,10 @@ def run_translation(idf_3_8_0: openstudio.IdfFile) -> openstudio.IdfFile:
             # ----------------------------------------------
             # * Interpolate to Timestep * 3 - Changed from bool to string choice
             copy_object_as_is(obj=obj, newObject=newObject)
+            if value := obj.getString(3):
+                value = value.get()
+                value = 'Yes' if value not in ('No', '') else value
+                newObject.setString(3, value)
             targetIdf.addObject(newObject)
 
         else:

@@ -1,0 +1,210 @@
+
+OS:Version,
+  {47ff5dc5-992a-44c2-bbeb-159184cfd709}, !- Handle
+  3.7.0;                                  !- Version Identifier
+
+OS:Schedule:Constant,
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Handle
+  Always On Discrete,                     !- Name
+  {c7847156-4614-4e0e-a492-e7536b4da5e7}, !- Schedule Type Limits Name
+  1;                                      !- Value
+
+OS:ScheduleTypeLimits,
+  {c7847156-4614-4e0e-a492-e7536b4da5e7}, !- Handle
+  OnOff,                                  !- Name
+  0,                                      !- Lower Limit Value
+  1,                                      !- Upper Limit Value
+  Discrete,                               !- Numeric Type
+  Availability;                           !- Unit Type
+
+OS:Fan:OnOff,
+  {93352d10-3f25-4b53-882f-16820fb84ab5}, !- Handle
+  Office_Shoe_Box_4afb8432 PTAC Fan,      !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  0.52,                                   !- Fan Total Efficiency
+  330.956913391313,                       !- Pressure Rise {Pa}
+  autosize,                               !- Maximum Flow Rate {m3/s}
+  0.8,                                    !- Motor Efficiency
+  1,                                      !- Motor In Airstream Fraction
+  ,                                       !- Air Inlet Node Name
+  ,                                       !- Air Outlet Node Name
+  ,                                       !- Fan Power Ratio Function of Speed Ratio Curve Name
+  ,                                       !- Fan Efficiency Ratio Function of Speed Ratio Curve Name
+  ;                                       !- End-Use Subcategory
+
+OS:Coil:Heating:Electric,
+  {1aaa9eab-39c1-440e-8c4c-aabdad75036e}, !- Handle
+  Office_Shoe_Box_4afb8432 PTAC No Heat,  !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  1,                                      !- Efficiency
+  0,                                      !- Nominal Capacity {W}
+  ,                                       !- Air Inlet Node Name
+  ;                                       !- Air Outlet Node Name
+
+OS:Coil:Cooling:DX:SingleSpeed,
+  {5790f46b-d2e9-4f25-b67f-68549b5a2bda}, !- Handle
+  Office_Shoe_Box_4afb8432 PTAC 1spd DX AC Clg Coil, !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  autosize,                               !- Rated Total Cooling Capacity {W}
+  autosize,                               !- Rated Sensible Heat Ratio
+  3,                                      !- Rated COP {W/W}
+  autosize,                               !- Rated Air Flow Rate {m3/s}
+  773.3,                                  !- Rated Evaporator Fan Power Per Volume Flow Rate 2017 {W/(m3/s)}
+  934.4,                                  !- Rated Evaporator Fan Power Per Volume Flow Rate 2023 {W/(m3/s)}
+  ,                                       !- Air Inlet Node Name
+  ,                                       !- Air Outlet Node Name
+  ,                                       !- Total Cooling Capacity Function of Temperature Curve Name
+  ,                                       !- Total Cooling Capacity Function of Flow Fraction Curve Name
+  ,                                       !- Energy Input Ratio Function of Temperature Curve Name
+  ,                                       !- Energy Input Ratio Function of Flow Fraction Curve Name
+  ,                                       !- Part Load Fraction Correlation Curve Name
+  -25,                                    !- Minimum Outdoor Dry-Bulb Temperature for Compressor Operation {C}
+  0,                                      !- Nominal Time for Condensate Removal to Begin {s}
+  0,                                      !- Ratio of Initial Moisture Evaporation Rate and Steady State Latent Capacity {dimensionless}
+  0,                                      !- Maximum Cycling Rate {cycles/hr}
+  0,                                      !- Latent Capacity Time Constant {s}
+  ,                                       !- Condenser Air Inlet Node Name
+  AirCooled,                              !- Condenser Type
+  0.9,                                    !- Evaporative Condenser Effectiveness {dimensionless}
+  autosize,                               !- Evaporative Condenser Air Flow Rate {m3/s}
+  autosize,                               !- Evaporative Condenser Pump Rated Power Consumption {W}
+  0,                                      !- Crankcase Heater Capacity {W}
+  ,                                       !- Crankcase Heater Capacity Function of Temperature Curve Name
+  10,                                     !- Maximum Outdoor Dry-Bulb Temperature for Crankcase Heater Operation {C}
+  ,                                       !- Supply Water Storage Tank Name
+  ,                                       !- Condensate Collection Water Storage Tank Name
+  0,                                      !- Basin Heater Capacity {W/K}
+  2;                                      !- Basin Heater Setpoint Temperature {C}
+
+OS:ZoneHVAC:PackagedTerminalAirConditioner,
+  {81e3a7e5-6d33-4bed-9a11-d8feb2546641}, !- Handle
+  Office_Shoe_Box_4afb8432 PTAC,          !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  ,                                       !- Air Inlet Node Name
+  ,                                       !- Air Outlet Node Name
+  OutdoorAir:Mixer,                       !- Outdoor Air Mixer Object Type
+  ,                                       !- Outdoor Air Mixer Name
+  Autosize,                               !- Supply Air Flow Rate During Cooling Operation {m3/s}
+  Autosize,                               !- Supply Air Flow Rate During Heating Operation {m3/s}
+  Autosize,                               !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s}
+  Autosize,                               !- Outdoor Air Flow Rate During Cooling Operation {m3/s}
+  Autosize,                               !- Outdoor Air Flow Rate During Heating Operation {m3/s}
+  Autosize,                               !- Outdoor Air Flow Rate When No Cooling or Heating is Needed {m3/s}
+  {93352d10-3f25-4b53-882f-16820fb84ab5}, !- Supply Air Fan Name
+  {1aaa9eab-39c1-440e-8c4c-aabdad75036e}, !- Heating Coil Name
+  {5790f46b-d2e9-4f25-b67f-68549b5a2bda}, !- Cooling Coil Name
+  DrawThrough,                            !- Fan Placement
+  ;                                       !- Supply Air Fan Operating Mode Schedule Name
+
+OS:Fan:OnOff,
+  {82b73b09-ff8d-43bd-9e77-4ca0f646a2cd}, !- Handle
+  Office_Shoe_Box_4afb8432 PTHP Fan,      !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  0.52,                                   !- Fan Total Efficiency
+  330.956913391313,                       !- Pressure Rise {Pa}
+  autosize,                               !- Maximum Flow Rate {m3/s}
+  0.8,                                    !- Motor Efficiency
+  1,                                      !- Motor In Airstream Fraction
+  ,                                       !- Air Inlet Node Name
+  ,                                       !- Air Outlet Node Name
+  ,                                       !- Fan Power Ratio Function of Speed Ratio Curve Name
+  ,                                       !- Fan Efficiency Ratio Function of Speed Ratio Curve Name
+  ;                                       !- End-Use Subcategory
+
+OS:Coil:Heating:DX:SingleSpeed,
+  {81ad300a-cfd7-4eae-814c-a61a67a38e30}, !- Handle
+  Office_Shoe_Box_4afb8432 PTHP Htg Coil, !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  Autosize,                               !- Rated Total Heating Capacity {W}
+  3.3,                                    !- Rated COP {W/W}
+  Autosize,                               !- Rated Air Flow Rate {m3/s}
+  773.3,                                  !- Rated Supply Fan Power Per Volume Flow Rate 2017 {W/(m3/s)}
+  934.4,                                  !- Rated Supply Fan Power Per Volume Flow Rate 2023 {W/(m3/s)}
+  ,                                       !- Air Inlet Node Name
+  ,                                       !- Air Outlet Node Name
+  ,                                       !- Total Heating Capacity Function of Temperature Curve Name
+  ,                                       !- Total Heating Capacity Function of Flow Fraction Curve Name
+  ,                                       !- Energy Input Ratio Function of Temperature Curve Name
+  ,                                       !- Energy Input Ratio Function of Flow Fraction Curve Name
+  ,                                       !- Part Load Fraction Correlation Curve Name
+  ,                                       !- Defrost Energy Input Ratio Function of Temperature Curve Name
+  ,                                       !- Minimum Outdoor Dry-Bulb Temperature for Compressor Operation {C}
+  ,                                       !- Maximum Outdoor Dry-Bulb Temperature for Defrost Operation {C}
+  ,                                       !- Crankcase Heater Capacity {W}
+  ,                                       !- Crankcase Heater Capacity Function of Temperature Curve Name
+  ,                                       !- Maximum Outdoor Dry-Bulb Temperature for Crankcase Heater Operation {C}
+  ReverseCycle,                           !- Defrost Strategy
+  OnDemand,                               !- Defrost Control
+  0.166667,                               !- Defrost Time Period Fraction
+  2000;                                   !- Resistive Defrost Heater Capacity {W}
+
+OS:Coil:Cooling:DX:SingleSpeed,
+  {332a208a-8a98-412b-90f7-1aedd563ff88}, !- Handle
+  Office_Shoe_Box_4afb8432 PTHP Clg Coil, !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  autosize,                               !- Rated Total Cooling Capacity {W}
+  autosize,                               !- Rated Sensible Heat Ratio
+  3,                                      !- Rated COP {W/W}
+  autosize,                               !- Rated Air Flow Rate {m3/s}
+  773.3,                                  !- Rated Evaporator Fan Power Per Volume Flow Rate 2017 {W/(m3/s)}
+  934.4,                                  !- Rated Evaporator Fan Power Per Volume Flow Rate 2023 {W/(m3/s)}
+  ,                                       !- Air Inlet Node Name
+  ,                                       !- Air Outlet Node Name
+  ,                                       !- Total Cooling Capacity Function of Temperature Curve Name
+  ,                                       !- Total Cooling Capacity Function of Flow Fraction Curve Name
+  ,                                       !- Energy Input Ratio Function of Temperature Curve Name
+  ,                                       !- Energy Input Ratio Function of Flow Fraction Curve Name
+  ,                                       !- Part Load Fraction Correlation Curve Name
+  -25,                                    !- Minimum Outdoor Dry-Bulb Temperature for Compressor Operation {C}
+  0,                                      !- Nominal Time for Condensate Removal to Begin {s}
+  0,                                      !- Ratio of Initial Moisture Evaporation Rate and Steady State Latent Capacity {dimensionless}
+  0,                                      !- Maximum Cycling Rate {cycles/hr}
+  0,                                      !- Latent Capacity Time Constant {s}
+  ,                                       !- Condenser Air Inlet Node Name
+  AirCooled,                              !- Condenser Type
+  0.9,                                    !- Evaporative Condenser Effectiveness {dimensionless}
+  autosize,                               !- Evaporative Condenser Air Flow Rate {m3/s}
+  autosize,                               !- Evaporative Condenser Pump Rated Power Consumption {W}
+  0,                                      !- Crankcase Heater Capacity {W}
+  ,                                       !- Crankcase Heater Capacity Function of Temperature Curve Name
+  10,                                     !- Maximum Outdoor Dry-Bulb Temperature for Crankcase Heater Operation {C}
+  ,                                       !- Supply Water Storage Tank Name
+  ,                                       !- Condensate Collection Water Storage Tank Name
+  0,                                      !- Basin Heater Capacity {W/K}
+  2;                                      !- Basin Heater Setpoint Temperature {C}
+
+OS:Coil:Heating:Electric,
+  {5e03a336-fa52-485a-bfc0-345057d7df76}, !- Handle
+  Office_Shoe_Box_4afb8432 PTHP Supplemental Htg Coil, !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  1,                                      !- Efficiency
+  ,                                       !- Nominal Capacity {W}
+  ,                                       !- Air Inlet Node Name
+  ;                                       !- Air Outlet Node Name
+
+OS:ZoneHVAC:PackagedTerminalHeatPump,
+  {992e89c8-6824-4c8f-87b5-43934f0864ac}, !- Handle
+  Office_Shoe_Box_4afb8432 PTHP,          !- Name
+  {b857d07e-549f-44a2-acf8-9a2e8294c985}, !- Availability Schedule Name
+  ,                                       !- Air Inlet Node Name
+  ,                                       !- Air Outlet Node Name
+  OutdoorAir:Mixer,                       !- Outdoor Air Mixer Object Type
+  ,                                       !- Outdoor Air Mixer Name
+  Autosize,                               !- Supply Air Flow Rate During Cooling Operation {m3/s}
+  Autosize,                               !- Supply Air Flow Rate During Heating Operation {m3/s}
+  Autosize,                               !- Supply Air Flow Rate When No Cooling or Heating is Needed {m3/s}
+  Autosize,                               !- Outdoor Air Flow Rate During Cooling Operation {m3/s}
+  Autosize,                               !- Outdoor Air Flow Rate During Heating Operation {m3/s}
+  Autosize,                               !- Outdoor Air Flow Rate When No Cooling or Heating is Needed {m3/s}
+  {82b73b09-ff8d-43bd-9e77-4ca0f646a2cd}, !- Supply Air Fan Name
+  {81ad300a-cfd7-4eae-814c-a61a67a38e30}, !- Heating Coil Name
+  ,                                       !- Heating Convergence Tolerance {dimensionless}
+  ,                                       !- Minimum Outdoor Dry-Bulb Temperature for Compressor Operation {C}
+  {332a208a-8a98-412b-90f7-1aedd563ff88}, !- Cooling Coil Name
+  ,                                       !- Cooling Convergence Tolerance {dimensionless}
+  {5e03a336-fa52-485a-bfc0-345057d7df76}, !- Supplemental Heating Coil Name
+  Autosize,                               !- Maximum Supply Air Temperature from Supplemental Heater {C}
+  ,                                       !- Maximum Outdoor Dry-Bulb Temperature for Supplemental Heater Operation {C}
+  DrawThrough,                            !- Fan Placement
+  ;                                       !- Supply Air Fan Operating Mode Schedule Name
+
