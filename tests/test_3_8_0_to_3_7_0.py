@@ -27,7 +27,9 @@ def backport_and_save(osm_rel_path: Path) -> openstudio.IdfFile:
 def test_vt_HeatExchangerAirToAirSensibleAndLatent():
     idf_file = backport_and_save(osm_rel_path=Path("HeatExchangerAirToAirSensibleAndLatent_3_8_0.osm"))
 
-    air_air_hxs = get_objects_by_type(idf_file=idf_file, idd_object_type_name="OS:HeatExchanger:AirToAir:SensibleAndLatent")
+    air_air_hxs = get_objects_by_type(
+        idf_file=idf_file, idd_object_type_name="OS:HeatExchanger:AirToAir:SensibleAndLatent"
+    )
     assert len(air_air_hxs) == 1
     air_air_hx = air_air_hxs[0]
 

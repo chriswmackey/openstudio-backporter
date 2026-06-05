@@ -42,4 +42,3 @@ OS:HeatExchanger:AirToAir:SensibleAndLatent,
   ,                                       !- Initial Defrost Time Fraction {dimensionless}
   ,                                       !- Rate of Defrost Time Fraction Increase {1/K}
   No;                                     !- Economizer Lockout
-

@@ -38,4 +38,3 @@ OS:People:Definition,
   ,                                       !- Space Floor Area per Person {m2/person}
   0.3,                                    !- Fraction Radiant
   Autocalculate;                          !- Sensible Heat Fraction
-

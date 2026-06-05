@@ -3,8 +3,12 @@ from pathlib import Path
 import openstudio
 from loguru import logger
 
-from openstudiobackporter import backport_3_8_0_to_3_7_0, backport_3_9_0_to_3_8_0, \
-    backport_3_10_0_to_3_9_0, backport_3_11_0_to_3_10_0
+from openstudiobackporter import (
+    backport_3_8_0_to_3_7_0,
+    backport_3_9_0_to_3_8_0,
+    backport_3_10_0_to_3_9_0,
+    backport_3_11_0_to_3_10_0,
+)
 
 
 def run_translation_noop(idf_file: openstudio.IdfFile) -> openstudio.IdfFile:

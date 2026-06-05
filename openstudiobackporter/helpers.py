@@ -71,9 +71,7 @@ def copy_with_deleted_fields(
             newObject.setString(i - offset, value.get())
 
 
-def copy_with_added_fields(
-    obj: openstudio.IdfObject, newObject: openstudio.IdfObject, skip_indices: set[int]
-) -> None:
+def copy_with_added_fields(obj: openstudio.IdfObject, newObject: openstudio.IdfObject, skip_indices: set[int]) -> None:
     """Copy an IdfObject while skipping certain field indices that were added.
 
     Args:

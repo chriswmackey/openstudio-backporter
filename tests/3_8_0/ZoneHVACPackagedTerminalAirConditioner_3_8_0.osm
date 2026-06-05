@@ -209,5 +209,3 @@ OS:ZoneHVAC:PackagedTerminalHeatPump,
   ,                                       !- Maximum Outdoor Dry-Bulb Temperature for Supplemental Heater Operation {C}
   DrawThrough,                            !- Fan Placement
   ;                                       !- Supply Air Fan Operating Mode Schedule Name
-
- 

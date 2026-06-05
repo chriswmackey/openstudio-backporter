@@ -4,8 +4,8 @@ from loguru import logger
 from openstudiobackporter.helpers import (
     brief_description,
     copy_object_as_is,
+    copy_with_added_fields,
     copy_with_deleted_fields,
-    copy_with_added_fields
 )
 
 
@@ -55,7 +55,9 @@ def run_translation(idf_3_8_0: openstudio.IdfFile) -> openstudio.IdfFile:
                     newObject.setString(ct, value.get())
             targetIdf.addObject(newObject)
 
-        elif iddname == "OS:ZoneHVAC:PackagedTerminalAirConditioner" or iddname == "OS:ZoneHVAC:PackagedTerminalHeatPump":
+        elif (
+            iddname == "OS:ZoneHVAC:PackagedTerminalAirConditioner" or iddname == "OS:ZoneHVAC:PackagedTerminalHeatPump"
+        ):
 
             # 1 Field has been added from 3.7.0 to 3.8.0:
             # ----------------------------------------------
