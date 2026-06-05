@@ -47,8 +47,8 @@ def run_translation(idf_3_8_0: openstudio.IdfFile) -> openstudio.IdfFile:
             # * Latent Effectiveness of Heating Air Flow Curve Name * 21
             # * Sensible Effectiveness of Cooling Air Flow Curve Name * 22
             # * Latent Effectiveness of Cooling Air Flow Curve Name * 23
-            copy_from_indices = (4, 5, 6, 7)
-            copy_to_indices = (6, 7, 10, 11)
+            copy_from_indices = {4, 5, 6, 7}
+            copy_to_indices = {6, 7, 10, 11}
             copy_with_added_fields(obj=obj, newObject=newObject, skip_indices=copy_to_indices)
             for cf, ct in zip(copy_from_indices, copy_to_indices):
                 if value := obj.getString(cf):
