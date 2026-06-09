@@ -55,7 +55,7 @@ def copy_with_deleted_fields(
 ) -> None:
     """Copy an IdfObject while skipping certain field indices.
 
-    Used to backport cases where new fields have been added in the middle of the 
+    Used to backport cases where new fields have been added in the middle of the
     IdfObject when going from the older to newer version.
 
     Args:
@@ -99,9 +99,7 @@ def copy_with_added_fields(
             newObject.setString(i, value.get())
 
 
-def copy_with_cutoff_fields(
-    obj: openstudio.IdfObject, newObject: openstudio.IdfObject, cutoff_index: int
-) -> None:
+def copy_with_cutoff_fields(obj: openstudio.IdfObject, newObject: openstudio.IdfObject, cutoff_index: int) -> None:
     """Copy an IdfObject while skipping fields from a certain index onward.
 
     Used to backport cases where new fields have been added to the end of the

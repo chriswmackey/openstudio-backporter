@@ -15,4 +15,3 @@ OS:People:Definition,
   ,                                       !- Carbon Dioxide Generation Rate {m3/s-W}
   ,                                       !- Enable ASHRAE 55 Comfort Warnings
   EnclosureAveraged;                      !- Mean Radiant Temperature Calculation Type
-

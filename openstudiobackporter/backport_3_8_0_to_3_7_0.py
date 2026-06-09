@@ -5,7 +5,7 @@ from openstudiobackporter.helpers import (
     brief_description,
     copy_object_as_is,
     copy_with_added_fields,
-    copy_with_deleted_fields
+    copy_with_deleted_fields,
 )
 
 

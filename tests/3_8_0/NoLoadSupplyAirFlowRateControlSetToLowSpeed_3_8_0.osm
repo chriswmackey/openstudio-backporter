@@ -633,4 +633,3 @@ OS:AirLoopHVAC:UnitarySystem,
   ,                                       !- Outdoor Dry-Bulb Temperature Sensor Node Name
   0,                                      !- Ancilliary On-Cycle Electric Power {W}
   0;                                      !- Ancilliary Off-Cycle Electric Power {W}
-
